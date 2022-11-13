@@ -104,6 +104,7 @@ public:
         float x = bounds.size.x / 2.f;
         float y = bounds.size.y / 2.f;
         Vector2 size(x, y);
+        
         NW = new QuadTree(Bounds(bounds.center + Vector2(-x, y),
                                  size), capacity);
         NE = new QuadTree(Bounds(bounds.center + Vector2(x, y),
@@ -116,12 +117,13 @@ public:
     }
 
     void Insert(Vector2 point) {
+        // if point is not contained, bail
         if (!bounds.Contains(point)) {
-            // if does not containt, bail
             return;
         }
 
-        if (bSubdivided) {
+        
+        if (bSubdivided) {                      // insert in child nodes if subdivided
 
             std::cout << "INSERTING IN SUBTREES" << std::endl;
             NW->Insert(point);
@@ -129,12 +131,12 @@ public:
             SW->Insert(point);
             SE->Insert(point);
         }
-        else if (points.size() < capacity) {
+        else if (points.size() < capacity) {    // insert point into this node
             std::cout << "HAS SPACE" << std::endl;
             points.push_back(point);
         }
-        else {
-            // at capacity and not subdivided
+        else {                                  // at max capacity and not subdivided
+            
             std::cout << "SUBDIVIDE" << std::endl;
             Subdivide();
             Insert(point);
@@ -142,12 +144,14 @@ public:
     }
 
     void Query(std::vector<Vector2>& list, Bounds queryBounds) {
+        // check each point in node if its in the queryed bounds
         for (int i = 0; i < points.size(); ++i) {
             if (queryBounds.Contains(points[i])) {
                 list.push_back(points[i]);
             }
         }
 
+        // query children nodes if subdivided
         if (bSubdivided) {
             NW->Query(list, queryBounds);
             NE->Query(list, queryBounds);
