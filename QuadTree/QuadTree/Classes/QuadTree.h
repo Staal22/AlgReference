@@ -62,8 +62,6 @@ public:
     Vector2 center;
     Vector2 size;
 
-    Vector2 awdawd = -center;
-
     bool Contains(Vector2 point) const {
         if (point.x > center.x + size.x / 2.f ||
             point.x < center.x - size.x / 2.f ||
@@ -71,6 +69,12 @@ public:
             point.y < center.y - size.y / 2.f) {
             return false;
         }
+        return true;
+    }
+
+    bool Contains(Bounds other) {
+        if (abs(center.x - other.center.x) > (size.x / 2.f - other.size.x / 2.f)) return false;
+        if (abs(center.y - other.center.y) > (size.y / 2.f - other.size.y / 2.f)) return false;
         return true;
     }
 };
@@ -144,6 +148,10 @@ public:
     }
 
     void Query(std::vector<Vector2>& list, Bounds queryBounds) {
+
+        if (queryBounds.Contains()) {
+            
+        }
         // check each point in node if its in the queryed bounds
         for (int i = 0; i < points.size(); ++i) {
             if (queryBounds.Contains(points[i])) {
