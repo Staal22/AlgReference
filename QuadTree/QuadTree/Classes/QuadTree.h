@@ -149,9 +149,10 @@ public:
 
     void Query(std::vector<Vector2>& list, Bounds queryBounds) {
 
-        if (queryBounds.Contains()) {
-            
+        if (!queryBounds.Contains(bounds)) {
+            return;
         }
+        
         // check each point in node if its in the queryed bounds
         for (int i = 0; i < points.size(); ++i) {
             if (queryBounds.Contains(points[i])) {
