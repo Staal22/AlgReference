@@ -45,6 +45,25 @@ void LinkedList<T>::InsertAtFront(T data) {
 }
 
 template <class T>
+void LinkedList<T>::InsertAtBack(T data) {
+    if (jaw == nullptr) { // if list is empty, insert at front
+        InsertAtFront(data);
+        return;
+    }
+
+    
+    Node<T>* new_node = new Node<T>();
+    new_node->data = data;
+    
+    Node<T>* searchNode = jaw;
+    while (searchNode->next != nullptr) { // seachNode = last node of list
+        searchNode = searchNode->next;
+    }
+
+    searchNode->next = new_node;
+}
+
+template <class T>
 void LinkedList<T>::InsertAtIndex(int index, T data) {
     if (IsOutOfRange(index)) {
         std::cout << k_outOfRangeMessage << index <<std::endl;
@@ -83,16 +102,15 @@ void LinkedList<T>::InsertAtIndex(int index, T data) {
 template <class T>
 void LinkedList<T>::RemoveAtIndex(int index) {
     
-
-    
     if (index == 0) {
-        Node<T>* toRemove = GetNodeAt(0);
+        Node<T>* toRemove = jaw;
         jaw = toRemove->next;
         delete toRemove;
+        return;
     }
         
-        
     Node<T>* pre = GetNodeAt(index - 1);
+        
     Node<T>* toRemove = pre->next;
     pre->next = pre->next->next;
            
@@ -125,7 +143,7 @@ void LinkedList<T>::printListReverse() {
 }
 
 template <class T>
-int LinkedList<T>::Size() {
+int LinkedList<T>::Size() const {
 
     Node<T>* searchNode = jaw;
     int size = 0;

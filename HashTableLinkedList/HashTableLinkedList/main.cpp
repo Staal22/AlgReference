@@ -7,13 +7,25 @@
 // HashTableLinkedList
 void ShowHTLL() {
     HashTableLinkedList<int> HT = HashTableLinkedList<int>{};
-    if (HT.IsEmpty()) {
+    if (HT.IsEmpty())
         std::cout << "IsEmpty" << std::endl;
-    }
     else
         std::cout << "IsNOTEmpty" << std::endl;
         
-        
+    HT.InsertItem(101, 5);
+    HT.InsertItem(102, 5);
+    HT.InsertItem(201, 10);
+    HT.InsertItem(202, 69);
+    HT.RemoveItem(102);
+    HT.InsertItem(5915, 15);
+    
+    
+    if (HT.IsEmpty())
+        std::cout << "IsEmpty" << std::endl;
+    else
+        std::cout << "IsNOTEmpty" << std::endl;
+
+    HT.Print();
 }
 
 int main()

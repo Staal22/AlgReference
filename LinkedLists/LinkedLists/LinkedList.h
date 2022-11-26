@@ -27,6 +27,8 @@ public:
     
     void InsertAtFront(T data);
 
+    void InsertAtBack(T data);
+
     void InsertAtIndex(int index, T data);
 
     void RemoveAtIndex(int index);
@@ -37,7 +39,7 @@ public:
 
     void printListReverse();
 
-    int Size();
+    int Size() const;
 
     void Swap(int iIndex, int jIndex);
 

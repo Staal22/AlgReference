@@ -2,6 +2,13 @@
 int main(int argc, char* argv[])
 {
     LinkedList<int> linked_list = LinkedList<int>();
+
+    linked_list.InsertAtFront(1);
+    linked_list.InsertAtBack(5);
+    linked_list.InsertAtBack(151);
+    linked_list.printList();
+
+return 0;
     linked_list.InsertAtFront(7);
     linked_list.InsertAtFront(4);
     linked_list.InsertAtFront(2);
