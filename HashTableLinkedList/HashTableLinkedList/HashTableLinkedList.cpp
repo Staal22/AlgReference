@@ -12,6 +12,7 @@ int main()
         std::cout << "Ops"  << std::endl;
     }
 
+    HT.InsertItem(900, "0im");
     HT.InsertItem(905, "Jim");
     HT.InsertItem(904, "Aim");
     HT.InsertItem(505, "Bim");
@@ -23,6 +24,8 @@ int main()
 
     HT.RemoveItem(905);
     HT.RemoveItem(100);
+
+    std::cout << HT.table[0].begin()++->second << std::endl;
     
     if (HT.IsEmpty()) {
         std::cout << "Ops!" << std::endl;
