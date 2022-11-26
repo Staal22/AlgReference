@@ -14,5 +14,9 @@ int main(int argc, char* argv[])
     
     linked_list.InsertAtIndex(6, 69);
     linked_list.printList();
+
+    linked_list.Swap(7, 6);
+    linked_list.InsertAtIndex(-1, 15);
+    linked_list.printList();
     return 0;
 }

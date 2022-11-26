@@ -13,6 +13,7 @@ template <class T>
 class LinkedList {
 private:
     Node<T>* jaw;
+    static const std::string k_outOfRangeMessage;
 public:
     LinkedList();
 
@@ -28,9 +29,9 @@ public:
 
     void InsertAtIndex(int index, T data);
 
-    void RemoveAtIndex(int index) {
-        
-    }
+    void RemoveAtIndex(int index);
+
+
     
     void printList();
 
@@ -39,6 +40,8 @@ public:
     int Size();
 
     void Swap(int iIndex, int jIndex);
+
+    bool IsOutOfRange(int index);
 };
 
 

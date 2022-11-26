@@ -4,18 +4,19 @@
 
 #include "SortingAlgClasses/QuickSort.h"
 
-void PrintVector(std::vector<int>& list) {
-    for (int i = 0; i < list.size(); ++i) {
-        std::cout << list[i] << " "; 
-    }
-    std::cout << std:: endl;
-}
 
 int main(int argc, char* argv[])
 {
-    std::vector<int> list = {1,7,5,12,8,0,4};
+    std::vector<int> list = {1000, 1,7,5,12, -4, 69, 100, 99,2,0,4, 3, 4, -692};
+    QuickSort(list, 0, list.size() - 1);
     PrintVector(list);
+    return 0;
+    
     QuickSortPartition(list, 0, list.size() - 1);
-    PrintVector(list);   
+    PrintVector(list);
+    QuickSortPartition(list,0,2);
+    PrintVector(list);
+    QuickSortPartition(list,0,1);
+    PrintVector(list);
     return 0;
 }

@@ -1,5 +1,9 @@
 // #include "LinkedList.h"
 
+// the way to define a static const variable to a class.
+template <class T>
+const std::string LinkedList<T>::k_outOfRangeMessage  = "ERROR_INDEX_OUT_OF_RANGE : ";
+
 template <class T>
 LinkedList<T>::LinkedList() {
     jaw = nullptr;
@@ -42,6 +46,12 @@ void LinkedList<T>::InsertAtFront(T data) {
 
 template <class T>
 void LinkedList<T>::InsertAtIndex(int index, T data) {
+    if (IsOutOfRange(index)) {
+        std::cout << k_outOfRangeMessage << index <<std::endl;
+    }
+        
+
+    
     // if we are head
     if (index == 0) {
         InsertAtFront(data);
@@ -68,6 +78,25 @@ void LinkedList<T>::InsertAtIndex(int index, T data) {
     }
 
 
+}
+
+template <class T>
+void LinkedList<T>::RemoveAtIndex(int index) {
+    
+
+    
+    if (index == 0) {
+        Node<T>* toRemove = GetNodeAt(0);
+        jaw = toRemove->next;
+        delete toRemove;
+    }
+        
+        
+    Node<T>* pre = GetNodeAt(index - 1);
+    Node<T>* toRemove = pre->next;
+    pre->next = pre->next->next;
+           
+    delete toRemove;
 }
 
 template <class T>
@@ -115,12 +144,22 @@ int LinkedList<T>::Size() {
 
 template <class T>
 void LinkedList<T>::Swap(int iIndex, int jIndex) {
-    T i = At(iIndex);
-    T j = At(jIndex);
+    if (iIndex == jIndex) {
+        return;
+    }
 
-    InsertAtIndex(iIndex, j);
-    InsertAtIndex(jIndex, i);
+    
+    T idata = At(iIndex);
+    T jdata = At(jIndex);
 
+    InsertAtIndex(jIndex, idata);
+    InsertAtIndex(iIndex, jdata);
+
+    RemoveAtIndex(jIndex + 2);
+    RemoveAtIndex(iIndex + 1);
+    
+
+    
     
     
     
@@ -130,4 +169,16 @@ void LinkedList<T>::Swap(int iIndex, int jIndex) {
     // At(0).
         
         
+}
+
+template <class T>
+bool LinkedList<T>::IsOutOfRange(int index) {
+    if (index < 0) 
+        return true;
+        
+    int size = Size();
+    if (index >= size)         
+        return true;
+
+    return false;
 }
