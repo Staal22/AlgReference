@@ -6,7 +6,7 @@
 
 template <typename T>
 void PrintVector(std::vector<T>& list) {
-    static_assert(std::is_base_of<IStringable, T>::value, "T must inherit from list");
+    static_assert(std::is_base_of<IStringable, T>::value, "T must inherit from IStringable");
 
     for (int i = 0; i < list.size(); ++i) {
         std::cout << list[i].ToString() << " ";

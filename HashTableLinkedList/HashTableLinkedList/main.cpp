@@ -1,11 +1,27 @@
 #include "HashTable/HashTable.h"
 #include <iostream>
 
+#include "HashTable/HashTableLinkedList.h"
 #include "HashTable/HashTableOpenAdressing.h"
 
+// HashTableLinkedList
+void ShowHTLL() {
+    HashTableLinkedList<int> HT = HashTableLinkedList<int>{};
+    if (HT.IsEmpty()) {
+        std::cout << "IsEmpty" << std::endl;
+    }
+    else
+        std::cout << "IsNOTEmpty" << std::endl;
+        
+        
+}
 
 int main()
 {
+    ShowHTLL();
+    return 0;
+
+    
     HashTableOpenAdressing adressHT = HashTableOpenAdressing();
     adressHT.Insert(101,"Aim");
     adressHT.Insert(102,"Bim");

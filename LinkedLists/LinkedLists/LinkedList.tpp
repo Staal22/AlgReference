@@ -139,7 +139,7 @@ int LinkedList<T>::Size() {
         searchNode = searchNode->next;
     }
 
-    return -1;
+    return 0;
 }
 
 template <class T>
