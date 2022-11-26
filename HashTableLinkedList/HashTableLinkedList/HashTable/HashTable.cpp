@@ -6,6 +6,7 @@ bool HashTable::IsEmpty() const {
     for (int i = 0; i < hashGroups; ++i) {
         sum += table[i].size();
     }
+    
     if (!sum) {
         return true;
     }
@@ -18,8 +19,8 @@ int HashTable::HashFunction(int key) {
 
 void HashTable::InsertItem(int key, std::string value) {
     int hashValue = HashFunction(key);
-    auto& cell = table[hashValue];
-    auto bItr = std::begin(cell);
+    std::list<std::pair<int, std::string>>& cell = table[hashValue];
+    std::list<std::pair<int, std::string>>::iterator bItr = std::begin(cell);
     bool bKeyExists = false; // TODO
     for (; bItr != std::end(cell); bItr++) {
         if (bItr->first == key) {
@@ -60,15 +61,13 @@ std::string HashTable::SearchTable(int key) {
     return "awdaw";
 }
 
-
-
 void HashTable::Print() {
     for (int i = 0; i < hashGroups; i++) {
         if (table[i].size() == 0) continue;
 
         auto bItr = table[i].begin();
         for (; bItr != table[i].end(); bItr++) {
-            std::cout << "INFO : Key: " << bItr->first << " Value: " << bItr->second << std::endl;
+            std::cout << "INFO hashGroup " << i<< " : Key: " << bItr->first << " Value: " << bItr->second << std::endl;
         }
     }
     return;

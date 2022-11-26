@@ -3,16 +3,8 @@
 #include <iostream>
 #include <vector>
 
-void PrintVector(std::vector<int>& list) {
-    for (int i = 0; i < list.size(); ++i) {
-        std::cout << list[i] << " "; 
-    }
-    std::cout << std:: endl;
-}
+#include "VectorHelpers.h"
 
-void PrintVector(std::vector<int>& list, int start, int end) {
-    
-}
 
 int QuickSortPartition(std::vector<int>& list, int start, int end) {
 
@@ -71,6 +63,9 @@ void QuickSort(std::vector<int>& list, int start, int end) {
     QuickSort(list, pivot + 1, end);
     
 }
+
+
+
 
 
 // from geeks for geeks

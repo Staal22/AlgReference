@@ -154,11 +154,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interfaces\Stringable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SortingAlgClasses\QuickSort.cpp" />
+    <ClCompile Include="SortingAlgClasses\SelectionSort.cpp" />
+    <ClCompile Include="SortingAlgClasses\VectorHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interfaces\Stringable.h" />
     <ClInclude Include="SortingAlgClasses\QuickSort.h" />
+    <ClInclude Include="SortingAlgClasses\QuickSort.tpp" />
+    <ClInclude Include="SortingAlgClasses\SelectionSort.h" />
+    <ClInclude Include="SortingAlgClasses\SelectionSort.tpp" />
+    <ClInclude Include="SortingAlgClasses\VectorHelpers.h" />
+    <ClInclude Include="SortingAlgClasses\VectorHelpers.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

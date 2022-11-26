@@ -156,9 +156,11 @@
   <ItemGroup>
     <ClCompile Include="HashTableLinkedList.cpp" />
     <ClCompile Include="HashTable\HashTable.cpp" />
+    <ClCompile Include="HashTable\HashTableOpenAdressing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashTable\HashTable.h" />
+    <ClInclude Include="HashTable\HashTableOpenAdressing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
