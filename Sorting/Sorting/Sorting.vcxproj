@@ -156,12 +156,15 @@
   <ItemGroup>
     <ClCompile Include="Interfaces\Stringable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SortingAlgClasses\MergeSort\MergeSort.cpp" />
     <ClCompile Include="SortingAlgClasses\QuickSort.cpp" />
     <ClCompile Include="SortingAlgClasses\SelectionSort.cpp" />
     <ClCompile Include="SortingAlgClasses\VectorHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interfaces\Stringable.h" />
+    <ClInclude Include="SortingAlgClasses\MergeSort\MergeSort.h" />
+    <ClInclude Include="SortingAlgClasses\MergeSort\MergeSort.tpp" />
     <ClInclude Include="SortingAlgClasses\QuickSort.h" />
     <ClInclude Include="SortingAlgClasses\QuickSort.tpp" />
     <ClInclude Include="SortingAlgClasses\SelectionSort.h" />

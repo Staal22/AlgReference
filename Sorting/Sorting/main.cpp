@@ -82,6 +82,15 @@ void ShowQuickSort(const std::vector<int>& mainList) {
     // std::cout << std::endl;
 }
 
+void ShowMergeSort(const std::vector<int>& mainList) {
+    std::vector<SomeScalarClass> someBingusList{};
+    for (int i = 0; i < mainList.size(); ++i) {
+        someBingusList.push_back(SomeScalarClass(mainList[i]));
+    }
+
+    
+}
+
 int main(int argc, char* argv[]) {
     // showing off operator overloading
     // SomeScalarClass ssc1(15);
