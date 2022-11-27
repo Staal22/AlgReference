@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     linked_list.InsertAtBack(151);
     linked_list.printList();
 
-return 0;
+// return 0;
     linked_list.InsertAtFront(7);
     linked_list.InsertAtFront(4);
     linked_list.InsertAtFront(2);
