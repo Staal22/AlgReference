@@ -158,6 +158,7 @@
     <ClCompile Include="HashTable\HashTable.cpp" />
     <ClInclude Include="HashTable\HashTableLinkedList.tpp" />
     <ClCompile Include="HashTable\HashTableOpenAdressing.cpp" />
+    <ClInclude Include="Initializer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashTable\HashTable.h" />

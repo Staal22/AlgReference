@@ -26,6 +26,10 @@ void ShowHTLL() {
         std::cout << "IsNOTEmpty" << std::endl;
 
     HT.Print();
+
+    int key = 202;
+    int val = HT.SearchTable(key);
+    std::cout << "Key: "  << key << " Value: " << val << std::endl;
 }
 
 int main()

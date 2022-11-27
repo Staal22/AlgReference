@@ -15,7 +15,7 @@ public:
     int HashFunction(int key);
     void InsertItem(int key, T value);
     void RemoveItem(int key);
-    std::string SearchTable(int key); // TODO implement properly
+    T SearchTable(int key); // TODO implement properly
     void Print();
     
 };

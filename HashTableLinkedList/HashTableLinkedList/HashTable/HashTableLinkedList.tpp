@@ -1,5 +1,7 @@
 ﻿
 
+#include "../Initializer.h"
+
 template <typename T>
 bool HashTableLinkedList<T>::IsEmpty() const {
     int sum{};
@@ -68,8 +70,19 @@ void HashTableLinkedList<T>::RemoveItem(int key) {
 }
 
 template <typename T>
-std::string HashTableLinkedList<T>::SearchTable(int key) {
-    // TODO implement
+T HashTableLinkedList<T>::SearchTable(int key) {
+    int hash = HashFunction(key);
+    LinkedList<std::pair<int, T>> list = table[hash];
+
+    Node<std::pair<int, T>>* searchNode = list.GetNodeAt(0);
+    while (searchNode != nullptr) {
+        if (searchNode->data.first == key) {
+            return searchNode->data.second;
+        }
+    }
+
+    Initializer<T> def{};
+    return def.t;
 }
 
 template <typename T>
