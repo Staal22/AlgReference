@@ -147,9 +147,19 @@ void ShowMergeSort(const std::vector<int>& mainList) {
     MergeSort(someBingusList, 0, someBingusList.size() - 1);
 
     PrintVector(someBingusList);
-
-
 }
+
+void ShowMergeSortLinkedList(const std::vector<int>& mainList) {
+    
+    LinkedList<SomeScalarClass> someBingusList{};
+    for (int i = 0; i < mainList.size(); ++i) {
+        someBingusList.InsertAtBack(SomeScalarClass(mainList[i]));
+    }
+    MergeSort(someBingusList, 0, someBingusList.Size() - 1);
+
+    std::cout << someBingusList << std::endl;
+}
+
 
 
 int main(int argc, char* argv[]) {
@@ -182,9 +192,8 @@ int main(int argc, char* argv[]) {
     std::vector<int> list = {1000, 1, 7, 5, 12, -4, 69, 100, 99, 2, 0, 4, 3, 4, -692};
     // PrintVector(list);
 
-    MergeSort(list, 0, list.size() - 1);
-
-    PrintVector(list);
+    // ShowMergeSort(list);
+    ShowMergeSortLinkedList(list);
     // ShowQuickSort(list);
     // ShowSelectionSortLinkedList(list);
     // ShowQuickSortLinkedList(list);
