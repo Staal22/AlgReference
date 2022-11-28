@@ -35,6 +35,10 @@ public:
         return value > rhs.value;
     }
 
+    bool operator <=(const SomeScalarClass& rhs) const {
+        return value <= rhs.value;
+    }
+
 
     SomeScalarClass operator +(const SomeScalarClass& rhs) const {
         return SomeScalarClass(value + rhs.value);
@@ -50,7 +54,7 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os,  SomeScalarClass& s) {
+std::ostream& operator<<(std::ostream& os, SomeScalarClass& s) {
     os << s.value;
     return os;
 }
@@ -119,7 +123,7 @@ void ShowQuickSort(const std::vector<int>& mainList) {
 }
 
 void ShowQuickSortLinkedList(const std::vector<int>& mainList) {
-    
+
     LinkedList<SomeScalarClass> someBingusList{};
     for (int i = 0; i < mainList.size(); ++i) {
         someBingusList.InsertAtBack(SomeScalarClass(mainList[i]));
@@ -132,6 +136,7 @@ void ShowQuickSortLinkedList(const std::vector<int>& mainList) {
     std::cout << someBingusList << std::endl;
     // PrintVector<SomeScalarClass>(someBingusList);
 }
+
 // MERGE SORT
 // -------------------------------------------------
 void ShowMergeSort(const std::vector<int>& mainList) {
@@ -142,11 +147,9 @@ void ShowMergeSort(const std::vector<int>& mainList) {
     MergeSort(someBingusList, 0, someBingusList.size() - 1);
 
     PrintVector(someBingusList);
-    
+
 
 }
-
-
 
 
 int main(int argc, char* argv[]) {
@@ -158,17 +161,34 @@ int main(int argc, char* argv[]) {
     // std::cout << ssc1.ToString() << std::endl << ssc2.ToString() << std::endl << ssc3.ToString() << std::endl;
     // return 0;
 
+    /*
+    int begin = 0;
+    std::vector<int> lis = {1,2,5,6,1000, 50,52,100, 105};
+    int end = lis.size()-1; 
+    int mid = begin + (end - begin) / 2;
+    Merge(lis, 0, mid, end);
+    
+    for (int i = 0; i < lis.size(); ++i) {
+        std::cout << lis[i] << " ";
+    }
+    std::cout << std::endl;
+    // return 0;
+    */
 
-    
-    
+    // std::vector<int> lis2 = {1000, 1, 7, 5};
+    // MergeSort(lis2, 0, lis2.size()-1);
+
+    // return 0;
     std::vector<int> list = {1000, 1, 7, 5, 12, -4, 69, 100, 99, 2, 0, 4, 3, 4, -692};
+    // PrintVector(list);
+
+    MergeSort(list, 0, list.size() - 1);
+
     PrintVector(list);
-
-
     // ShowQuickSort(list);
     // ShowSelectionSortLinkedList(list);
     // ShowQuickSortLinkedList(list);
-    ShowMergeSort(list);
+    // ShowMergeSort(list);
     return 0;
 
     // QuickSort(list, 0, list.size() - 1);
