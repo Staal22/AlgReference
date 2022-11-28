@@ -52,8 +52,4 @@ public:
     friend std::ostream& operator << (std::ostream& os, const LinkedList<U>& lt);
 };
 
-
-
-
-
 #include "LinkedList.tpp"   

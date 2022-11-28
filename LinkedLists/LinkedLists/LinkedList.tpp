@@ -170,10 +170,13 @@ int LinkedList<T>::Size() const {
 
 template <class T>
 void LinkedList<T>::Swap(int iIndex, int jIndex) {
-    if (iIndex == jIndex) {
+    if (iIndex == jIndex) // early bail
+        return;
+
+    if (iIndex > jIndex) {
+        Swap(jIndex, iIndex); // swaps but with indexes swapped
         return;
     }
-
     
     T idata = At(iIndex);
     T jdata = At(jIndex);

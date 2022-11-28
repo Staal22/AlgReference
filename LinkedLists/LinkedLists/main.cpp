@@ -22,8 +22,10 @@ int main(int argc, char* argv[])
     linked_list.InsertAtIndex(6, 69);
     linked_list.printList();
 
-    linked_list.Swap(7, 6);
-    linked_list.InsertAtIndex(1, 15);
+    std::cout << "SWAP TEST" << std::endl;
+    linked_list.Swap(7, 4);
+    linked_list.printList();
+    linked_list.Swap(4, 7);
     linked_list.printList();
 
     std::cout << "AHHH" << std::endl;
