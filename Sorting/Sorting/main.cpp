@@ -8,10 +8,15 @@
 #include "SortingAlgClasses/QuickSort.h"
 #include "SortingAlgClasses/VectorHelpers.h"
 
+#include "../../LinkedLists/LinkedLists/LinkedList.h"
 
 
 class SomeScalarClass : public IStringable {
 public:
+    // SomeScalarClass() = default;
+    SomeScalarClass() {
+        value = 0;
+    }
     SomeScalarClass(float f) {
         value = f;
     }
@@ -48,6 +53,20 @@ public:
 //         return l.value > r.value;
 //     }  
 // };
+
+void ShowSelectionSortLinkedList(const std::vector<int> mainList) {
+    LinkedList<SomeScalarClass> list = LinkedList<SomeScalarClass>();
+    
+    for (int i = 0; i < mainList.size(); ++i) {
+        list.InsertAtBack(SomeScalarClass(mainList[i]));
+    }
+
+    SelectionSort(list);
+
+    for (int i = 0; i < list.Size(); ++i) {
+        std::cout << list[i].ToString() << " ";
+    }
+}
 
 void ShowSelectionSort(const std::vector<int> mainList) {
     
@@ -105,7 +124,8 @@ int main(int argc, char* argv[]) {
     // ShowSelectionSort(list);
 
 
-    ShowQuickSort(list);
+    // ShowQuickSort(list);
+    ShowSelectionSortLinkedList(list);
     return 0;
 
     // QuickSort(list, 0, list.size() - 1);

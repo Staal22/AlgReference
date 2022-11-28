@@ -1,6 +1,14 @@
 // #include "LinkedList.h"
 
 // the way to define a static const variable to a class.
+
+
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const Node<U>& n) {
+    os << n.data << " ";
+    return os;
+}
+
 template <class T>
 const std::string LinkedList<T>::k_outOfRangeMessage  = "ERROR_INDEX_OUT_OF_RANGE : ";
 
@@ -10,7 +18,7 @@ LinkedList<T>::LinkedList() {
 }
 
 template <class T>
-T& LinkedList<T>::At(const int& index) {
+T& LinkedList<T>::At(const int& index) const {
     Node<T>* node = jaw;
     int i = 0;
     while (node != nullptr) {
@@ -124,7 +132,7 @@ void LinkedList<T>::printList() {
         std::cout << start->data << " ";
         start = start->next;
     }
-
+    
     std::cout << start->data;
     std::cout << std::endl;
 }
@@ -199,4 +207,12 @@ bool LinkedList<T>::IsOutOfRange(int index) {
         return true;
 
     return false;
+}
+
+template<class U>
+std::ostream& operator <<(std::ostream& os, const LinkedList<U>& lt) {
+    for (int i = 0; i < lt.Size(); ++i) {
+        os << lt.At(i) << " ";
+    }
+    return os;
 }

@@ -25,5 +25,8 @@ int main(int argc, char* argv[])
     linked_list.Swap(7, 6);
     linked_list.InsertAtIndex(1, 15);
     linked_list.printList();
+
+    std::cout << "AHHH" << std::endl;
+    std::cout << linked_list << std::endl;
     return 0;
 }

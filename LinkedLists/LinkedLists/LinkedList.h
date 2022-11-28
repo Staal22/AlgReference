@@ -7,6 +7,9 @@ class Node {
 public:
     T data;
     Node<T>* next = nullptr;
+
+    template<typename  U>
+    friend std::ostream& operator<<(std::ostream& os, const Node<U>& n);
 };
 
 template <class T>
@@ -17,7 +20,7 @@ private:
 public:
     LinkedList();
 
-    T& At(const int& index);
+    T& At(const int& index) const;
 
     Node<T>* GetNodeAt(const int& index);
     
@@ -44,7 +47,12 @@ public:
     void Swap(int iIndex, int jIndex);
 
     bool IsOutOfRange(int index);
+
+    template<class U>
+    friend std::ostream& operator << (std::ostream& os, const LinkedList<U>& lt);
 };
+
+
 
 
 
