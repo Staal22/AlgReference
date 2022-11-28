@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include <string>
 #include <vector>
 
@@ -9,6 +10,7 @@
 #include "SortingAlgClasses/VectorHelpers.h"
 
 #include "../../LinkedLists/LinkedLists/LinkedList.h"
+#include "SortingAlgClasses/MergeSort/MergeSort.h"
 
 
 class SomeScalarClass : public IStringable {
@@ -137,9 +139,13 @@ void ShowMergeSort(const std::vector<int>& mainList) {
     for (int i = 0; i < mainList.size(); ++i) {
         someBingusList.push_back(SomeScalarClass(mainList[i]));
     }
+    MergeSort(someBingusList, 0, someBingusList.size() - 1);
 
+    PrintVector(someBingusList);
+    
 
 }
+
 
 
 
@@ -152,14 +158,17 @@ int main(int argc, char* argv[]) {
     // std::cout << ssc1.ToString() << std::endl << ssc2.ToString() << std::endl << ssc3.ToString() << std::endl;
     // return 0;
 
+
+    
+    
     std::vector<int> list = {1000, 1, 7, 5, 12, -4, 69, 100, 99, 2, 0, 4, 3, 4, -692};
     PrintVector(list);
-    // ShowSelectionSort(list);
 
 
-    ShowQuickSort(list);
+    // ShowQuickSort(list);
     // ShowSelectionSortLinkedList(list);
-    ShowQuickSortLinkedList(list);
+    // ShowQuickSortLinkedList(list);
+    ShowMergeSort(list);
     return 0;
 
     // QuickSort(list, 0, list.size() - 1);

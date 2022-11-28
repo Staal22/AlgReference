@@ -2,9 +2,9 @@
 #include <vector>
 
 template<typename T>
-std::vector<T> MergeSort(std::vector<T>& list);
+void MergeSort(std::vector<T>& list, int begin, int end);
 
 template<typename T>
-std::vector<T> Merge(std::vector<T>& list, int begin, int mid, int end);
+void Merge(std::vector<T>& list, int begin, int mid, int end);
 
 #include "MergeSort.tpp"
