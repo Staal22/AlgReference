@@ -19,13 +19,20 @@ public:
     // SomeScalarClass() = default;
     SomeScalarClass() {
         value = 0;
+        next = nullptr;
     }
 
-    SomeScalarClass(float f) {
+    SomeScalarClass(float f) :SomeScalarClass() {
         value = f;
     }
 
+    SomeScalarClass(const SomeScalarClass& a) : SomeScalarClass() { // copy constructor
+        value = a.value;
+    }
+    
     float value{};
+
+    SomeScalarClass* next;
 
     // used for sorting
     bool operator <(const SomeScalarClass& rhs) const {
@@ -206,6 +213,17 @@ int main(int argc, char* argv[]) {
     // std::vector<int> lis2 = {1000, 1, 7, 5};
     // MergeSort(lis2, 0, lis2.size()-1);
 
+    SomeScalarClass* ref = new SomeScalarClass(69);
+    
+    SomeScalarClass s(1.112515f);
+    s.next = ref;
+    SomeScalarClass b(s);
+
+    std::cout << s.value << " " << s.next  << std::endl;
+    std::cout << b.value << " " << b.next << std::endl;
+     
+    return 0;
+    
     
     
     std::vector<int> list = {1000, 1, 7, 5, 12, -4, 69, 100, 99, 2, 0, 4, 3, 4, -692};

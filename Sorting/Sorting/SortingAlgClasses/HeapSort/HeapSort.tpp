@@ -32,7 +32,6 @@ void Heapify(std::vector<T>& list, int i, int size) {
     
     if (right >= size)
         right = i;
-
     
     // im doing some coding skateboard tricks here, this is a TERRIBLE way to code it, as its not easily understandable (though is really efficient >:) )
     auto biggest = [&list](const int l, const int r) {return list[l] < list[r];    };
