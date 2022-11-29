@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="Interfaces\Stringable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClInclude Include="SortingAlgClasses\HeapSort\HeapSort.tpp" />
     <ClCompile Include="SortingAlgClasses\MergeSort\MergeSort.cpp" />
     <ClCompile Include="SortingAlgClasses\QuickSort.cpp" />
     <ClCompile Include="SortingAlgClasses\SelectionSort.cpp" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interfaces\Stringable.h" />
+    <ClInclude Include="SortingAlgClasses\HeapSort\HeapSort.h" />
     <ClInclude Include="SortingAlgClasses\MergeSort\MergeSort.h" />
     <ClInclude Include="SortingAlgClasses\MergeSort\MergeSort.tpp" />
     <ClInclude Include="SortingAlgClasses\QuickSort.h" />

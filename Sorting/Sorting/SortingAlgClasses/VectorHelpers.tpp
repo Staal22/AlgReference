@@ -7,6 +7,7 @@
 
 template <typename T>
 void PrintVector(std::vector<T>& list) {
+    // forces the T to inherit from i stringable
     static_assert(std::is_base_of<IStringable, T>::value, "T must inherit from IStringable");
 
     std::cout << std::setprecision(12);

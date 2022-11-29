@@ -10,6 +10,7 @@
 #include "SortingAlgClasses/VectorHelpers.h"
 
 #include "../../LinkedLists/LinkedLists/LinkedList.h"
+#include "SortingAlgClasses/HeapSort/HeapSort.h"
 #include "SortingAlgClasses/MergeSort/MergeSort.h"
 
 
@@ -50,6 +51,9 @@ public:
         return std::to_string(value).substr(0, a + 2);
     }
 
+    // overloading the std::cout << operator! This way we can super easily debug it to console
+    // note: we cannot do this directly in the class, becouse when oveloading normale we can only choose the operator and the *right* side if the operator (where left is the class)
+    // therefore we have to link it to a seperate overload (hence the friend keyword)
     friend std::ostream& operator<<(std::ostream& os, SomeScalarClass& s);
 
 };
@@ -59,17 +63,8 @@ std::ostream& operator<<(std::ostream& os, SomeScalarClass& s) {
     return os;
 }
 
-// struct Comparator{
-//     bool operator < (knockOffFLoat l, knockOffFLoat r) {
-//         return l.value < r.value;
-//     }  
-//     bool operator > (knockOffFLoat l, knockOffFLoat r) {
-//         return l.value > r.value;
-//     }  
-// };
-
 // SELECTION SORT
-// ------------------------------------------------------------
+// ----------------------------------------------------------
 void ShowSelectionSortLinkedList(const std::vector<int> mainList) {
     LinkedList<SomeScalarClass> list = LinkedList<SomeScalarClass>();
 
@@ -104,7 +99,7 @@ void ShowSelectionSort(const std::vector<int> mainList) {
 
 
 // QUICK SORT
-// ---------------------------------------------------------------
+// ----------------------------------------------------------
 void ShowQuickSort(const std::vector<int>& mainList) {
 
     std::vector<SomeScalarClass> someBingusList{};
@@ -138,7 +133,7 @@ void ShowQuickSortLinkedList(const std::vector<int>& mainList) {
 }
 
 // MERGE SORT
-// -------------------------------------------------
+// ----------------------------------------------------------
 void ShowMergeSort(const std::vector<int>& mainList) {
     std::vector<SomeScalarClass> someBingusList{};
     for (int i = 0; i < mainList.size(); ++i) {
@@ -160,8 +155,31 @@ void ShowMergeSortLinkedList(const std::vector<int>& mainList) {
     std::cout << someBingusList << std::endl;
 }
 
+// HEAP SORT
+// ----------------------------------------------------------
+void ShowHeapSort(const std::vector<int>& mainList) {
+    std::vector<SomeScalarClass> someBingusList{};
+    for (int i = 0; i < mainList.size(); ++i) {
+        someBingusList.push_back(SomeScalarClass(mainList[i]));
+    }
 
+    HeapSort(someBingusList);
+    PrintVector(someBingusList);
+}
 
+void ShowHeapSortLinkedList(const std::vector<int>& mainList) {
+    
+    LinkedList<SomeScalarClass> someBingusList{};
+    for (int i = 0; i < mainList.size(); ++i) {
+        someBingusList.InsertAtBack(SomeScalarClass(mainList[i]));
+    }
+    HeapSort(someBingusList);
+
+    std::cout << someBingusList << std::endl;
+}
+
+// MAIN
+// ----------------------------------------------------------
 int main(int argc, char* argv[]) {
     // showing off operator overloading
     // SomeScalarClass ssc1(15);
@@ -188,22 +206,29 @@ int main(int argc, char* argv[]) {
     // std::vector<int> lis2 = {1000, 1, 7, 5};
     // MergeSort(lis2, 0, lis2.size()-1);
 
-    // return 0;
+    
+    
     std::vector<int> list = {1000, 1, 7, 5, 12, -4, 69, 100, 99, 2, 0, 4, 3, 4, -692};
-    // PrintVector(list);
-
-    // ShowMergeSort(list);
+    
+    std::cout << "SELECTION SORT : " << std::endl;
+    ShowSelectionSort(list);
+    ShowSelectionSortLinkedList(list);
+    std::cout << std::endl;
+    
+    std::cout << "QUICK SORT : " << std::endl;
+    ShowQuickSort(list);
+    ShowQuickSortLinkedList(list);
+    std::cout << std::endl;
+    
+    std::cout << "MERGE SORT : " << std::endl;
+    ShowMergeSort(list);
     ShowMergeSortLinkedList(list);
-    // ShowQuickSort(list);
-    // ShowSelectionSortLinkedList(list);
-    // ShowQuickSortLinkedList(list);
-    // ShowMergeSort(list);
-    return 0;
+    std::cout << std::endl;
 
-    // QuickSort(list, 0, list.size() - 1);
-    SelectionSort(list);
-    PrintVector(list);
-
+    std::cout << "HEAP SORT : " << std::endl;
+    ShowHeapSort(list);
+    ShowHeapSortLinkedList(list);
+    std::cout << std::endl;
     return 0;
 
     QuickSortPartition(list, 0, list.size() - 1);

@@ -18,7 +18,6 @@ int main(int argc, char* argv[])
     linked_list.InsertAtFront(10);
     
     linked_list.InsertAtFront(9);
-    
     linked_list.InsertAtIndex(6, 69);
     linked_list.printList();
 
