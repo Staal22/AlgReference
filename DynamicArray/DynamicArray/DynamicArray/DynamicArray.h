@@ -3,126 +3,43 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdio.h>
+#include <string.h>
 
 template<typename T>
 class DynamicArray {
 public:
    DynamicArray();
    
-   DynamicArray(std::initializer_list<T> list) : DynamicArray() {
-      
-      std::vector<T> temp = {list};
-      while (_capacity < temp.size()) {
-         // std::cout << "Expanded!" << std::endl;
-         Expand();
-      }
+   DynamicArray(std::initializer_list<T> list);
 
-      // TODO transfer via memnmove /cpy
-      for (int i = 0; i < temp.size(); ++i) 
-         _arr[i] = temp[i];
-      _size += temp.size();
-      
-      // std::cout << temp.size() << std::endl;
-   }
+   void Expand();
 
-   void Expand() {
-      T* temp = new T[_capacity * 2];
-      for (int i = 0; i < _capacity; ++i) {
-         temp[i] = _arr[i];
-      }
+   void Shrink();
 
-      delete _arr;
-      _arr = temp;
-      
-      _capacity *=2;
+   void PushBack(T data);
 
-      std::cout << "Exanding" << std::endl;
-   }
+   void InsertAtIndex(const int& index, T data);
 
-   void Shrink() {
-      if (_capacity <= 1) {
-         return;
-      }
-      
-      T* temp = new T[_capacity / 2];
-      for (int i = 0; i < _capacity / 2; ++i) {
-         temp[i] = _arr[i];
-      }
+   void PopBack();
 
-      delete _arr;
-      _arr = temp;
-      
-      _capacity /=2;
-      std::cout << "Shrinking" << std::endl;
-   }
+   T& At(const int& index);
 
-   void PushBack(T data) {
-      if (_size >= _capacity) // at max capacity, expand 
-         Expand();
+   T& operator[](const int& i);
 
-      _arr[_size] = data;
-      _size++;
-   }
+   // return a copy
+   T SafeAt(const int& index) const;
 
-   void InsertAtIndex(const int& index, T data) {
-      if (OutOfRange(index)) {
-         std::cout << k_ERROR << index << std::endl;
-         std::string error = k_ERROR + " " + std::to_string( index);
-         throw std::invalid_argument(error);
-         return;
-      }
+   int Size() const; 
 
-      if (_size >= _capacity) // at max capacity, expand        
-         Expand();
+   int Capacity() const;
 
-      for (int i = _size; i > index; --i) { // moving all elements after i one to the right
-         _arr[i] = _arr[i-1];
-      }
-
-      _arr[index] = data;
-      _size++;
-      
-      
-   }
-
-   void PopBack() {
-      _size--;
-
-      if (_size <= _capacity / 2) {
-         Shrink();
-      }
-      // TODO can also reset element here if we want.
-   }
-
-   T& At(const int& index) {
-      if (OutOfRange(index)) {
-         std::cout << k_ERROR << index << std::endl;
-         std::string error = k_ERROR + " " + std::to_string( index);
-         throw std::invalid_argument(error);
-      } 
-      
-      return _arr[index];
-   }
-
-   T& operator[](const int& i) {
-      return At(i);
-   }
-
-   int Size() const {
-      return _size;
-   }
-
-   int Capacity() const {
-      return _capacity;
-   }
+   template<typename U>
+   friend std::ostream& operator<<(std::ostream& os, const DynamicArray<U>& n); 
    
    
 private:
-   bool OutOfRange(const int& i) const {
-      if (i < 0 || i >= _size)
-         return true;
-      return false;
-   }
+   bool OutOfRange(const int& i) const;
 
    
    T* _arr{};  
