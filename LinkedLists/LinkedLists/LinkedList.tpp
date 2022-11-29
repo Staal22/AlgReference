@@ -6,6 +6,7 @@
 template<typename U>
 std::ostream& operator<<(std::ostream& os, const Node<U>& n) {
     os << n.data << " ";
+    
     return os;
 }
 

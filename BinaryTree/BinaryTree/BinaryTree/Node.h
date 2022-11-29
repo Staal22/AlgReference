@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 class Node {
 public:
@@ -19,15 +20,36 @@ public:
 
     int Size();
 
-    /*
-    // void ToString() {
-    //     std::cout << data << std::endl;
-    //     if (l != nullptr)
-    //         l->ToString();
-    //     if (r != nullptr)
-    //         r->ToString();
-    // }
-    */
+    void ToStringInOrder(std::string& someText);
+
+    void ToStringPreOrder(std::string& someText);
+
+    void ToStringPostOrder(std::string& someText);
+
+    void PrintTree();
+
+private:
+    void GetActualSize(int& size);
+
+    void GetDepthValuePair(std::vector<std::pair<int,int>>& list, int depth);
+};
+
+template<typename T>
+class NodeT {
+public:
+    NodeT* l{};
+    NodeT* r{};
+    T data{};
+
+    NodeT(T _data);
+
+    void Insert(T newData);
+
+    int Find(T dataToFind);
+
+    void Clear();
+
+    int Size();
 
     void ToStringInOrder(std::string& someText);
 
@@ -42,3 +64,5 @@ private:
 
     void GetDepthValuePair(std::vector<std::pair<int,int>>& list, int depth);
 };
+
+#include "Node.tpp"

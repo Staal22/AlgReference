@@ -82,6 +82,7 @@ public:
         else { // key does not exist
             std::cout << "WARNING: Key does not exit..." << std::endl;
         }
+        
     }
 
     int GetHash(int key) {
