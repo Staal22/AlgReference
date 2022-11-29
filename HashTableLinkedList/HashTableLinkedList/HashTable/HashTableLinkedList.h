@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../../LinkedLists/LinkedLists/LinkedList.h"
-#include "../../../Sorting/Sorting/Interfaces/Stringable.h"
+// #include "../../../Sorting/Sorting/Interfaces/Stringable.h"
 
 
 template<typename T>
