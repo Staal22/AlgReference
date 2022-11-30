@@ -36,4 +36,5 @@ public:
 
 };
 
+#include "SomeScalarClass.cpp"
 

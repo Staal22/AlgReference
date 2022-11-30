@@ -5,9 +5,11 @@
 
 int main() {
     SomeScalarClass t = SomeScalarClass();
-    // NodeT<SomeScalarClass>* templateNode = new NodeT<SomeScalarClass>(SomeScalarClass(15));
-    // templateNode->Insert(SomeScalarClass(4));
-    // templateNode->PrintTree();
+    NodeT<SomeScalarClass>* templateNode = new NodeT<SomeScalarClass>(SomeScalarClass(15));
+    templateNode->Insert(SomeScalarClass(4));
+    templateNode->Insert(SomeScalarClass(3));
+    templateNode->Insert(SomeScalarClass(4));
+    templateNode->PrintTree();
 
 
     return 0;
