@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 
-#include "Interfaces/Stringable.h"
 #include "SortingAlgClasses/SelectionSort.h"
 
 #include "SortingAlgClasses/QuickSort.h"
@@ -12,63 +11,7 @@
 #include "../../LinkedLists/LinkedLists/LinkedList.h"
 #include "SortingAlgClasses/HeapSort/HeapSort.h"
 #include "SortingAlgClasses/MergeSort/MergeSort.h"
-
-
-class SomeScalarClass : public IStringable {
-public:
-    // SomeScalarClass() = default;
-    SomeScalarClass() {
-        value = 0;
-        next = nullptr;
-    }
-
-    SomeScalarClass(float f) :SomeScalarClass() {
-        value = f;
-    }
-
-    SomeScalarClass(const SomeScalarClass& a) : SomeScalarClass() { // copy constructor
-        value = a.value;
-    }
-    
-    float value{};
-
-    SomeScalarClass* next;
-
-    // used for sorting
-    bool operator <(const SomeScalarClass& rhs) const {
-        return value < rhs.value;
-    }
-
-    bool operator >(const SomeScalarClass& rhs) const {
-        return value > rhs.value;
-    }
-
-    bool operator <=(const SomeScalarClass& rhs) const {
-        return value <= rhs.value;
-    }
-
-
-    SomeScalarClass operator +(const SomeScalarClass& rhs) const {
-        return SomeScalarClass(value + rhs.value);
-    }
-
-    std::string ToString() override {
-
-        size_t a = std::to_string(value).find(".");
-        return std::to_string(value).substr(0, a + 2);
-    }
-
-    // overloading the std::cout << operator! This way we can super easily debug it to console
-    // note: we cannot do this directly in the class, becouse when oveloading normale we can only choose the operator and the *right* side if the operator (where left is the class)
-    // therefore we have to link it to a seperate overload (hence the friend keyword)
-    friend std::ostream& operator<<(std::ostream& os, SomeScalarClass& s);
-
-};
-
-std::ostream& operator<<(std::ostream& os, SomeScalarClass& s) {
-    os << s.value;
-    return os;
-}
+#include "SomeScalarClass.h"
 
 // SELECTION SORT
 // ----------------------------------------------------------
@@ -213,16 +156,16 @@ int main(int argc, char* argv[]) {
     // std::vector<int> lis2 = {1000, 1, 7, 5};
     // MergeSort(lis2, 0, lis2.size()-1);
 
-    SomeScalarClass* ref = new SomeScalarClass(69);
+    // SomeScalarClass* ref = new SomeScalarClass(69);
     
-    SomeScalarClass s(1.112515f);
-    s.next = ref;
-    SomeScalarClass b(s);
+    // SomeScalarClass s(1.112515f);
+    // s.next = ref;
+    // SomeScalarClass b(s);
 
-    std::cout << s.value << " " << s.next  << std::endl;
-    std::cout << b.value << " " << b.next << std::endl;
+    // std::cout << s.value << " " << s.next  << std::endl;
+    // std::cout << b.value << " " << b.next << std::endl;
      
-    return 0;
+    // return 0;
     
     
     

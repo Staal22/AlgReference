@@ -62,7 +62,7 @@ public:
 private:
     void GetActualSize(int& size);
 
-    void GetDepthValuePair(std::vector<std::pair<int,int>>& list, int depth);
+    void GetDepthValuePair(std::vector<std::pair<int,T>>& listt, int depth);
 };
 
 #include "Node.tpp"

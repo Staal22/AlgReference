@@ -156,7 +156,9 @@
   <ItemGroup>
     <ClCompile Include="Interfaces\Stringable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClInclude Include="SomeScalarClass.h" />
     <ClInclude Include="SortingAlgClasses\HeapSort\HeapSort.tpp" />
+    <ClCompile Include="SomeScalarClass.cpp" />
     <ClCompile Include="SortingAlgClasses\MergeSort\MergeSort.cpp" />
     <ClCompile Include="SortingAlgClasses\QuickSort.cpp" />
     <ClCompile Include="SortingAlgClasses\SelectionSort.cpp" />

@@ -1,10 +1,16 @@
 #include "BinaryTree/Node.h"
 // #include "../../Sorting/Sorting/Interfaces/Stringable.h"
 #include <iostream>
+#include "../../Sorting/Sorting/SomeScalarClass.h"
 
 int main() {
+    SomeScalarClass t = SomeScalarClass();
+    // NodeT<SomeScalarClass>* templateNode = new NodeT<SomeScalarClass>(SomeScalarClass(15));
+    // templateNode->Insert(SomeScalarClass(4));
+    // templateNode->PrintTree();
 
 
+    return 0;
     Node* root = new Node(5);
     root->Insert(10);
     root->Insert(20);

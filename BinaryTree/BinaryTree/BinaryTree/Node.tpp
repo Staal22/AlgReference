@@ -14,7 +14,7 @@ void NodeT<T>::Insert(T newData) {
         }
         else {
             // we are at leaf
-            l = new NodeT(newData);
+            l = new NodeT<T>(newData);
             return;
         }
     }
@@ -25,7 +25,7 @@ void NodeT<T>::Insert(T newData) {
         }
         else {
             // we are at leaf
-            r = new NodeT(newData);
+            r = new NodeT<T>(newData);
             return;
         }
     }
@@ -100,7 +100,7 @@ void NodeT<T>::ToStringPostOrder(std::string& someText) {
 template<typename T>
 void NodeT<T>::PrintTree() {
     // find all data and sort them into depth
-    std::vector<std::pair<int, int>> depths{}; // pair<depth, value>
+    std::vector<std::pair<int, T>> depths{}; // pair<depth, value>
     GetDepthValuePair(depths, 0);
 
         
@@ -143,12 +143,12 @@ void NodeT<T>::GetActualSize(int& size) {
 }
 
 template<typename T>
-void NodeT<T>::GetDepthValuePair(std::vector<std::pair<int, int>>& list, int depth) {
+void NodeT<T>::GetDepthValuePair(std::vector<std::pair<int, T>>& listt, int depth) {
     if (l != nullptr) {
-        l->GetDepthValuePair(list, depth+1);
+        l->GetDepthValuePair(listt, depth+1);
     }
-    list.push_back(std::pair<int,int>(depth, data));
+    listt.push_back(std::pair<int,T>(depth, data));
     if (r != nullptr) {
-        r->GetDepthValuePair(list, depth +1);
+        r->GetDepthValuePair(listt, depth +1);
     }
 }
