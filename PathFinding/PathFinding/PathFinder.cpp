@@ -3,6 +3,14 @@
 #include <iostream>
 #include <queue>
 
+struct My_less
+{
+public:
+	My_less() = default;
+	auto operator()( Path* a, Path* b ) const
+		-> bool
+	{ return a->CalculateLength() > b->CalculateLength(); }
+};
 void PathFinder::AddNode(Node* node) {
 	Nodes.push_back(node);
 }
@@ -31,8 +39,9 @@ void PathFinder::Dijkstra(Node* start, Node* end) {
 	// ------------------------------------------------------
 	
 	// priority queue
-	std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
+	// std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
 	
+	std::priority_queue<Path*, std::vector<Path*>, My_less> priQueue{};
 	std::vector<Node*> visitedNodes{};
 
 	visitedNodes.push_back(start);

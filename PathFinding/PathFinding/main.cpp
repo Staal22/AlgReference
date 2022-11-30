@@ -1,9 +1,42 @@
 
 #include <iostream>
+#include <queue>
+#include <algorithm>
+#include <functional>
 
 #include "PathFinder.h"
 
 int main() {
+
+	
+	// std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
+	// Path* p1 = new Path();
+	// p1->Edges.push_back(Edge(2));
+	// p1->Edges.push_back(Edge(4));
+	// p1->Edges.push_back(Edge(2));
+	
+	// Path* p2 = new Path();
+	// p2->Edges.push_back(Edge(4));
+	// p2->Edges.push_back(Edge(4));
+	// p2->Edges.push_back(Edge(1));
+	
+	// Path* p3 = new Path();
+	// p3->Edges.push_back(Edge(14));
+	// p3->Edges.push_back(Edge(4));
+	// p3->Edges.push_back(Edge(1));
+	
+	// priQueue.push(p2);
+	// priQueue.push(p1);
+	// priQueue.push(p3);
+ 
+	// int size = priQueue.size();
+	// for (int i = 0; i < size; ++i) {
+		// std::cout << priQueue.top()->CalculateLength() << std::endl;
+		// priQueue.pop();
+	// }
+	
+    // return 0;
+    
     PathFinder pathFinder{};
     pathFinder.AddNode(new Node('A'));
     pathFinder.AddNode(new Node('B'));

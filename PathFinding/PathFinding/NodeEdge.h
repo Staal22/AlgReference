@@ -39,6 +39,9 @@ public:
 class Edge {
 public:
     Edge() = default;
+    Edge(float distance) { // TODO remove!
+        Distance = distance;
+    }
     Edge(Node* from, Node* to, float distance) {
         From = from;
         To = to;
@@ -83,5 +86,12 @@ public:
         std::cout << std::endl;
     }
     
-	operator float() const { return CalculateLength(); }
+	operator float() const { return CalculateLength(); } // to float
+	bool operator<(Path* r){ return CalculateLength() < r->CalculateLength(); } // to float
+
+    // friend bool operator<(Path* l, Path* r);
 };
+
+// bool operator<(Path*l, Path* r) {
+        // return  l->CalculateLength() < r->CalculateLength();
+    // }
