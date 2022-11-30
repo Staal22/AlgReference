@@ -3,7 +3,7 @@
 
 #include "PathFinder.h"
 
-int maisn() {
+int main() {
     PathFinder pathFinder{};
     pathFinder.AddNode(new Node('A'));
     pathFinder.AddNode(new Node('B'));

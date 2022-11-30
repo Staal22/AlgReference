@@ -79,6 +79,7 @@ public:
         for (int i = 0; i < Edges.size(); ++i) {
             std::cout << Edges[i].From->Name << " -> " << Edges[i].To->Name << " ";
         }
+        std::cout << "(" << CalculateLength() << ")";
         std::cout << std::endl;
     }
     

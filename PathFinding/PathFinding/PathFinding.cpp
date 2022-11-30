@@ -146,7 +146,7 @@ struct Graf
 };
 
 
-int main()
+int maain()
 {
 	Graf graf;
 	graf.settinn_node('A');
