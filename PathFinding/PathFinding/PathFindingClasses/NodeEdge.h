@@ -22,6 +22,7 @@ public:
     float Heuristic{};
     std::vector<Edge*> Edges{};
     Edge* FromEdge{};
+    float currentDistance{99999999.f};
 
     float GetHueristic() {
         return Heuristic;
@@ -34,6 +35,8 @@ public:
         }
         return FromEdge;
     }
+
+    void PrintPath();
 
 
     Edge* GetEdgeWithNode(Node* node);

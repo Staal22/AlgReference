@@ -11,8 +11,13 @@ public:
 
     // void PrintTerminal2D();
     void Dijkstra(char startChar, char endChar);
+    void Dijkstra2(char startChar, char endChar);
     void Astar(char startChar, char endChar);
+    void Astar2(char startChar, char endChar);
 
     Node* FindNode(char c);
+    
+private:
+    void SetAllNodesUnvisited();
 };
 

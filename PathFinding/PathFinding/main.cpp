@@ -80,8 +80,9 @@ int main() {
             std::cout << node->Edges[j]->GetOther(node)->Name << " ";
         std::cout << std::endl;
     }
-	pathFind.Dijkstra('A', 'H');
+	pathFind.Astar2('A', 'H');
 	
+	pathFind.Dijkstra2('A', 'H');
     return 0;
     PathFinder pathFinder{};
     pathFinder.AddNode(new Node('A'));
