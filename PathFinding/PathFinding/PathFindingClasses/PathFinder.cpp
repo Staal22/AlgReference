@@ -3,7 +3,7 @@
 #include <iostream>
 #include <queue>
 
-#define DEBUG_SEARCH
+// #define DEBUG_SEARCH
 
 
 struct My_less {
@@ -143,7 +143,8 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
     Node* start = FindNode(startChar);
     Node* end = FindNode(endChar);
     
-
+    My_lessDijkstra2 comparator{};
+    
     start->currentDistance = 0;
 
     // std::priority_queue<Node*, std::vector<Node*>, My_lessDijkstra> priorityQueue{};
@@ -166,8 +167,8 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
     }
 
     // make into heap
-    std::make_heap(priority.begin(), priority.end(), My_lessDijkstra2());
-    std::sort_heap(priority.begin(), priority.end(), My_lessDijkstra2());
+    std::make_heap(priority.begin(), priority.end(), comparator);
+    std::sort_heap(priority.begin(), priority.end(), comparator);
 
     // ACTUAL PATH FINDING
     // ------------------------------------------------------
@@ -175,15 +176,15 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
     while (!priority.empty()) {
 
         // pop
-        std::make_heap(priority.begin(), priority.end(), My_lessDijkstra2());
-        std::sort_heap(priority.begin(), priority.end(), My_lessDijkstra2());
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
         Node* current = priority[0];
         current->BVisited = true;
         nodesWalked++;
-        std::pop_heap(priority.begin(), priority.end(), My_lessDijkstra2());
+        std::pop_heap(priority.begin(), priority.end(), comparator);
         priority.pop_back();
-        std::make_heap(priority.begin(), priority.end(), My_lessDijkstra2());
-        std::sort_heap(priority.begin(), priority.end(), My_lessDijkstra2());
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
 
         if (current == end) {
             break;
@@ -197,15 +198,16 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
                 continue;
 
 
-            float ptoNewDistance = current->currentDistance + current->Edges[i]->Distance;
-            if (ptoNewDistance < probeNode->currentDistance) {
-                probeNode->currentDistance = ptoNewDistance;
+            float potentialShortest = current->currentDistance + current->Edges[i]->Distance;
+            if (potentialShortest < probeNode->currentDistance) {
+                probeNode->currentDistance = potentialShortest;
                 probeNode->FromEdge = current->Edges[i];
             }
         }
 
-        // std::make_heap(priority.begin(), priority.end(), My_lessAstar2());
-        // std::sort_heap(priority.begin(), priority.end(), My_lessAstar2());
+#ifdef DEBUG_SEARCH
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
 
         std::cout << "Checking : " << current->Name << " (" << current->currentDistance << ")" << std::endl;
         current->PrintPath();
@@ -213,11 +215,13 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
             std::cout << priority[i]->Name << " " << priority[i]->currentDistance + priority[i]->Heuristic << std::endl;
         }
         std::cout << "----------------" << std::endl;
+#endif
         
     }
 
     std::cout << "SHORTEST PATH | TOTAL NODES WALKED : " << nodesWalked << std::endl;
     end->PrintPath();
+    SetAllNodesUnvisited();
 
 }
 
@@ -298,7 +302,8 @@ void PathFinder::Astar2(char startChar, char endChar) {
     Node* start = FindNode(startChar);
     Node* end = FindNode(endChar);
     
-
+    My_lessAstar2 comparator{};
+    
     start->currentDistance = 0;
 
     // std::priority_queue<Node*, std::vector<Node*>, My_lessDijkstra> priorityQueue{};
@@ -321,8 +326,8 @@ void PathFinder::Astar2(char startChar, char endChar) {
     }
 
     // make into heap
-    std::make_heap(priority.begin(), priority.end(), My_lessAstar2());
-    std::sort_heap(priority.begin(), priority.end(), My_lessAstar2());
+    std::make_heap(priority.begin(), priority.end(), comparator);
+    std::sort_heap(priority.begin(), priority.end(), comparator);
 
     // ACTUAL PATH FINDING
     // ------------------------------------------------------
@@ -330,15 +335,15 @@ void PathFinder::Astar2(char startChar, char endChar) {
     while (!priority.empty()) {
 
         // pop
-        std::make_heap(priority.begin(), priority.end(), My_lessAstar2());
-        std::sort_heap(priority.begin(), priority.end(), My_lessAstar2());
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
         Node* current = priority[0];
         current->BVisited = true;
         nodesWalked++;
-        std::pop_heap(priority.begin(), priority.end(), My_lessAstar2());
+        std::pop_heap(priority.begin(), priority.end(), comparator);
         priority.pop_back();
-        std::make_heap(priority.begin(), priority.end(), My_lessAstar2());
-        std::sort_heap(priority.begin(), priority.end(), My_lessAstar2());
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
 
         if (current == end) {
             break;
@@ -352,16 +357,16 @@ void PathFinder::Astar2(char startChar, char endChar) {
                 continue;
 
 
-            float ptoNewDistance = current->currentDistance + current->Edges[i]->Distance;
-            if (ptoNewDistance < probeNode->currentDistance) {
-                probeNode->currentDistance = ptoNewDistance;
+            float potentialShortest = current->currentDistance + current->Edges[i]->Distance;
+            if (potentialShortest < probeNode->currentDistance) {
+                probeNode->currentDistance = potentialShortest;
                 probeNode->FromEdge = current->Edges[i];
             }
         }
 
 #ifdef DEBUG_SEARCH
-        std::make_heap(priority.begin(), priority.end(), My_lessAstar2());
-        std::sort_heap(priority.begin(), priority.end(), My_lessAstar2());
+        std::make_heap(priority.begin(), priority.end(), comparator);
+        std::sort_heap(priority.begin(), priority.end(), comparator);
 
         std::cout << "Checking : " << current->Name << " (" << current->currentDistance << ")" << std::endl;
         current->PrintPath();
