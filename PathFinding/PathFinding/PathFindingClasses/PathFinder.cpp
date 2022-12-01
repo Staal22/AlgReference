@@ -79,8 +79,11 @@ void PathFinder::Dijkstra(char startChar, char endChar) {
 		priQueue.pop(); // removes this path temporarily
 		
 		Node* lastNode = tempPath->GetEndNode();
+		lastNode->BVisited = true;
+		std::cout << "LAST NODE VISITED : " << lastNode->Name  << std::endl;
+		tempPath->PrintPath() ;
 		visitedNodes.push_back(lastNode);
-
+		
 		if (lastNode == end) {
 			shortestPath = tempPath;
 			break;
@@ -88,10 +91,14 @@ void PathFinder::Dijkstra(char startChar, char endChar) {
 		
 		// for each edge of last node, create new path
 		for (int i = 0; i < lastNode->Edges.size(); ++i) {
+			
 			if (lastNode->Edges[i] == lastNode->GetFromEdge()) 
 				continue;
-			if (lastNode->Edges[i]->GetOther(lastNode)->BVisited) 
+			std::cout << lastNode->Name << " CHECKING COLLISION WITH -> "<<lastNode->Edges[i]->GetOther(lastNode)->Name << std::endl;;
+			if (lastNode->Edges[i]->GetOther(lastNode)->BVisited) {
+				// std::cout << "Found node visited!" << lastNode->Edges[i]->GetOther(lastNode)->Name << std::endl;
 				continue;
+			}
 
 			
 			Path* newPath = new Path(*tempPath); // copeis
@@ -150,6 +157,8 @@ void PathFinder::Astar(char startChar, char endChar) {
 		priQueue.pop(); // removes this path temporarily
 		
 		Node* lastNode = tempPath->GetEndNode();
+		lastNode->BVisited = true;
+		std::cout << "LAST NODE VISITED : " << lastNode->Name << std::endl;
 		visitedNodes.push_back(lastNode);
 
 		if (lastNode == end) {

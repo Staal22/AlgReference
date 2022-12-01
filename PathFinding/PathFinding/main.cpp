@@ -4,7 +4,8 @@
 #include <algorithm>
 
 #include <functional>
-#include "PathFinder.h"
+#include "PathFindingClasses/NodeEdge.h"
+#include "PathFindingClasses/PathFinder.h"
 #include "PriorityQueueDerived.h"
 
 int main() {
@@ -37,22 +38,32 @@ int main() {
 
     
     PathFinder pathFind{};
-    pathFind.AddNode(new Node('A', 25));
-    pathFind.AddNode(new Node('B', 20));
-    pathFind.AddNode(new Node('C', 15));
-    pathFind.AddNode(new Node('D', 16));
-    pathFind.AddNode(new Node('E', 0));
-    pathFind.AddNode(new Node('F', 12));
-    
-    pathFind.AddEdge('A', 'B', 10);
-    pathFind.AddEdge('A', 'C', 15);
-    pathFind.AddEdge('B', 'F', 15);
-    pathFind.AddEdge('B', 'D', 12);
-    pathFind.AddEdge('C', 'E', 10);
-    pathFind.AddEdge('D', 'F', 1);
-    pathFind.AddEdge('D', 'E', 2);
-    pathFind.AddEdge('F', 'F', 5);
+    pathFind.AddNode(new Node('A', 23.91));
+    pathFind.AddNode(new Node('B', 25.98));
+    pathFind.AddNode(new Node('C', 16.26));
+    pathFind.AddNode(new Node('D', 13.96));
+    pathFind.AddNode(new Node('E', 16.11));
+    pathFind.AddNode(new Node('F', 9.14));
+    pathFind.AddNode(new Node('G', 8.29));
+    pathFind.AddNode(new Node('H', 0));
 
+	pathFind.AddEdge('A', 'E', 8.09);
+	pathFind.AddEdge('A', 'B', 5.67);
+	
+	pathFind.AddEdge('B', 'C', 10.00);
+	pathFind.AddEdge('B', 'D', 15.37);
+	
+	pathFind.AddEdge('C', 'E', 6.5);
+	pathFind.AddEdge('C', 'G', 8.62);
+	pathFind.AddEdge('C', 'F', 9.92);
+	
+	pathFind.AddEdge('D', 'G', 6.1);
+	
+	pathFind.AddEdge('E', 'F', 7.1);
+	
+	pathFind.AddEdge('F', 'H', 9.1);
+
+	pathFind.AddEdge('G', 'H', 8.35);
     std::cout << "EDGES : " << std::endl;
     for (int i = 0; i < pathFind.Edges.size(); ++i) {
         std::cout << pathFind.Edges[i]->From->Name << " <-> " << pathFind.Edges[i]->To->Name << std::endl;
@@ -69,7 +80,7 @@ int main() {
             std::cout << node->Edges[j]->GetOther(node)->Name << " ";
         std::cout << std::endl;
     }
-	pathFind.Dijkstra('A', 'E');
+	pathFind.Dijkstra('A', 'H');
 	
     return 0;
     PathFinder pathFinder{};
