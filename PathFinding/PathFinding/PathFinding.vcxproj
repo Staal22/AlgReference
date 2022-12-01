@@ -158,11 +158,13 @@
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="NodeEdge.cpp" />
     <ClCompile Include="PathFinding.cpp" />
+    <ClCompile Include="PriorityQueueDerived.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="NodeEdge.h" />
+    <ClInclude Include="PriorityQueueDerived.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

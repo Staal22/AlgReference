@@ -1,4 +1,4 @@
-// REFERENCE https://github.com/STEN1/algoritmer_datastrukturer/blob/main/Oblig3/Eksamen2019Oppgave4abDijkstra.cpp
+// REFERENCE Sten Rune Lyngmo https://github.com/STEN1/algoritmer_datastrukturer/blob/main/Oblig3/Eksamen2019Oppgave4abDijkstra.cpp
 #include <iostream>
 #include <list>
 #include <queue>

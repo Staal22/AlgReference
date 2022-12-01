@@ -15,11 +15,12 @@ public:
     
     bool BVisited{false};
     char Name;
+    float Hueristic{};
     std::vector<Edge*> Edges{};
     Edge* FromEdge{};
 
-    float GetHueristic(Node* endNode) {
-        
+    float GetHueristic() {
+        return Hueristic;
     }
 
     // assumes theat the index 
@@ -72,6 +73,10 @@ public:
             length += Edges[i].Distance;
         }
         return length;
+    }
+
+    float CalculateLengthHueristic() {
+        return CalculateLength() + GetEndNode()->GetHueristic();
     }
 
     Node* GetEndNode() {

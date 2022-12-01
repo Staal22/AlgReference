@@ -10,8 +10,8 @@ public:
     void AddEdge(char n1, char n2, float distance);
 
     // void PrintTerminal2D();
-    void Dijkstra(Node* start, Node* end);
-    void Astar();
+    void Dijkstra(char startChar, char endChar);
+    void Astar(char startChar, char endChar);
 
     Node* FindNode(char c);
 };

@@ -5,38 +5,76 @@
 #include <functional>
 
 #include "PathFinder.h"
+#include "PriorityQueueDerived.h"
 
 int main() {
 
 	
-	// std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
-	// Path* p1 = new Path();
-	// p1->Edges.push_back(Edge(2));
-	// p1->Edges.push_back(Edge(4));
-	// p1->Edges.push_back(Edge(2));
+	// PriorityQueueDerived<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
+	std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
+	Path* p1 = new Path();
+	p1->Edges.push_back(Edge(2));
+	p1->Edges.push_back(Edge(4));
+	p1->Edges.push_back(Edge(2));
 	
-	// Path* p2 = new Path();
-	// p2->Edges.push_back(Edge(4));
-	// p2->Edges.push_back(Edge(4));
-	// p2->Edges.push_back(Edge(1));
+	Path* p2 = new Path();
+	p2->Edges.push_back(Edge(4));
+	p2->Edges.push_back(Edge(4));
+	p2->Edges.push_back(Edge(1));
 	
-	// Path* p3 = new Path();
-	// p3->Edges.push_back(Edge(14));
-	// p3->Edges.push_back(Edge(4));
-	// p3->Edges.push_back(Edge(1));
+	Path* p3 = new Path();
+	p3->Edges.push_back(Edge(14));
+	p3->Edges.push_back(Edge(4));
+	p3->Edges.push_back(Edge(1));
 	
-	// priQueue.push(p2);
-	// priQueue.push(p1);
-	// priQueue.push(p3);
+	priQueue.push(p2);
+	priQueue.push(p1);
+	priQueue.push(p3);
  
-	// int size = priQueue.size();
-	// for (int i = 0; i < size; ++i) {
-		// std::cout << priQueue.top()->CalculateLength() << std::endl;
-		// priQueue.pop();
-	// }
+	int size = priQueue.size();
+	for (int i = 0; i < size; ++i) {
+		std::cout << priQueue.top()->CalculateLength() << std::endl;
+		priQueue.pop();
+	}
 	
-    // return 0;
+    return 0;
     
+    PathFinder pathFind{};
+    pathFind.AddNode(new Node('A'));
+    pathFind.AddNode(new Node('B'));
+    pathFind.AddNode(new Node('C'));
+    pathFind.AddNode(new Node('D'));
+    pathFind.AddNode(new Node('E'));
+    pathFind.AddNode(new Node('F'));
+    
+    pathFind.AddEdge('A', 'B', 10);
+    pathFind.AddEdge('A', 'C', 15);
+    pathFind.AddEdge('B', 'F', 15);
+    pathFind.AddEdge('B', 'D', 12);
+    pathFind.AddEdge('C', 'E', 10);
+    pathFind.AddEdge('D', 'F', 1);
+    pathFind.AddEdge('D', 'E', 2);
+    pathFind.AddEdge('F', 'F', 5);
+
+    std::cout << "EDGES : " << std::endl;
+    for (int i = 0; i < pathFind.Edges.size(); ++i) {
+        std::cout << pathFind.Edges[i]->From->Name << " <-> " << pathFind.Edges[i]->To->Name << std::endl;
+    }
+
+    // print all nodes and their edges
+    std::cout << std::endl;
+    std::cout << "NODES WITH OWNING EDGES : " << std::endl;
+    for (int i = 0; i < pathFind.Nodes.size(); ++i) {
+        Node* node = pathFind.Nodes[i];
+
+        std::cout << node->Name << " -> : ";
+        for (int j = 0; j < node->Edges.size(); ++j) 
+            std::cout << node->Edges[j]->GetOther(node)->Name << " ";
+        std::cout << std::endl;
+    }
+	pathFind.Astar('A', 'E');
+	
+    return 0;
     PathFinder pathFinder{};
     pathFinder.AddNode(new Node('A'));
     pathFinder.AddNode(new Node('B'));
@@ -68,7 +106,7 @@ int main() {
         std::cout << std::endl;
     }
 
-    pathFinder.Dijkstra(pathFinder.FindNode('A'), pathFinder.FindNode('D'));
+    pathFinder.Dijkstra('A', 'D');
 
     
     return 0;
