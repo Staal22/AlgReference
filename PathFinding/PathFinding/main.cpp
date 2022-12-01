@@ -2,16 +2,19 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
-#include <functional>
 
+#include <functional>
 #include "PathFinder.h"
 #include "PriorityQueueDerived.h"
 
 int main() {
 
 	
+	/*
 	// PriorityQueueDerived<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
-	std::priority_queue<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
+	auto comapre = [](Path* a, Path* b){return a->CalculateLength() < b->CalculateLength();};
+	// std::priority_queue<Path*, std::vector<Path*>, decltype(comapre)> priQueue(comapre);
+	PriorityQueueDerived<Path*, std::vector<Path*>, decltype(comapre)> priQueue(comapre);
 	Path* p1 = new Path();
 	p1->Edges.push_back(Edge(2));
 	p1->Edges.push_back(Edge(4));
@@ -30,22 +33,16 @@ int main() {
 	priQueue.push(p2);
 	priQueue.push(p1);
 	priQueue.push(p3);
- 
-	int size = priQueue.size();
-	for (int i = 0; i < size; ++i) {
-		std::cout << priQueue.top()->CalculateLength() << std::endl;
-		priQueue.pop();
-	}
-	
-    return 0;
+	*/
+
     
     PathFinder pathFind{};
-    pathFind.AddNode(new Node('A'));
-    pathFind.AddNode(new Node('B'));
-    pathFind.AddNode(new Node('C'));
-    pathFind.AddNode(new Node('D'));
-    pathFind.AddNode(new Node('E'));
-    pathFind.AddNode(new Node('F'));
+    pathFind.AddNode(new Node('A', 25));
+    pathFind.AddNode(new Node('B', 20));
+    pathFind.AddNode(new Node('C', 15));
+    pathFind.AddNode(new Node('D', 16));
+    pathFind.AddNode(new Node('E', 0));
+    pathFind.AddNode(new Node('F', 12));
     
     pathFind.AddEdge('A', 'B', 10);
     pathFind.AddEdge('A', 'C', 15);
@@ -72,7 +69,7 @@ int main() {
             std::cout << node->Edges[j]->GetOther(node)->Name << " ";
         std::cout << std::endl;
     }
-	pathFind.Astar('A', 'E');
+	pathFind.Dijkstra('A', 'E');
 	
     return 0;
     PathFinder pathFinder{};

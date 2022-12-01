@@ -12,15 +12,19 @@ public:
     Node(char name) {
         Name = name;
     }
+
+    Node(char name, float heuristic) : Node(name) {
+        Heuristic = heuristic;
+    }
     
     bool BVisited{false};
     char Name;
-    float Hueristic{};
+    float Heuristic{};
     std::vector<Edge*> Edges{};
     Edge* FromEdge{};
 
     float GetHueristic() {
-        return Hueristic;
+        return Heuristic;
     }
 
     // assumes theat the index 
@@ -92,7 +96,8 @@ public:
     }
     
 	operator float() const { return CalculateLength(); } // to float
-	bool operator<(Path* r){ return CalculateLength() < r->CalculateLength(); } // to float
+	// bool operator < ( const Path* r) const { return CalculateLength() < r->CalculateLength(); } 
+    
 
     // friend bool operator<(Path* l, Path* r);
 };
