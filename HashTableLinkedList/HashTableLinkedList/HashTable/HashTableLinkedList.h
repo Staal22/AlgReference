@@ -18,6 +18,7 @@ public:
     T SearchTable(int key); 
     void Print();
     
+    
 };
 
 #include "HashTableLinkedList.tpp"
