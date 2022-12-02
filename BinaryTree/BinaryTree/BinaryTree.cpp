@@ -2,6 +2,7 @@
 // #include "../../Sorting/Sorting/Interfaces/Stringable.h"
 #include <iostream>
 #include "../../Sorting/Sorting/SomeScalarClass.h"
+#include "../../Sorting/Sorting/SomeScalarClass.cpp"
 
 int main() {
     SomeScalarClass t = SomeScalarClass();
@@ -9,9 +10,16 @@ int main() {
     templateNode->Insert(SomeScalarClass(4));
     templateNode->Insert(SomeScalarClass(3));
     templateNode->Insert(SomeScalarClass(4));
+    templateNode->Insert(SomeScalarClass(20));
+    templateNode->Insert(SomeScalarClass(19));
+    templateNode->Insert(SomeScalarClass(16));
+    templateNode->Insert(SomeScalarClass(25));
+    templateNode->PrintTree();
+    templateNode->Delete(SomeScalarClass(3), templateNode);
+    std::cout << "---------------------------" << std::endl;
     templateNode->PrintTree();
 
-
+    
     return 0;
     Node* root = new Node(5);
     root->Insert(10);

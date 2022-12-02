@@ -30,6 +30,9 @@ bool SomeScalarClass::operator>(const SomeScalarClass& rhs) const {
 bool SomeScalarClass::operator<=(const SomeScalarClass& rhs) const {
     return value <= rhs.value;
 }
+bool SomeScalarClass::operator==(const SomeScalarClass& rhs) const {
+    return value == rhs.value;
+}
 
 SomeScalarClass SomeScalarClass::operator+(const SomeScalarClass& rhs) const {
     return SomeScalarClass(value + rhs.value);

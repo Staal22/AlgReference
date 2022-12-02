@@ -32,14 +32,17 @@ void NodeT<T>::Insert(T newData) {
 }
 
 template<typename T>
-int NodeT<T>::Find(T dataToFind) {
-    if (l != nullptr && dataToFind < data) {
+T NodeT<T>::Find(T dataToFind) {
+    if (dataToFind == data)
+        return data;
+    
+    if (l != nullptr && dataToFind < data)
         return l->Find(dataToFind);
-    }
-    if (r != nullptr && dataToFind > data) {
+    
+    if (r != nullptr && dataToFind > data)
         return r->Find(dataToFind);
-    }
-    return data;
+    // if we do not have the node
+    return NULL;
 }
 
 template<typename T>
@@ -52,6 +55,39 @@ void NodeT<T>::Clear() {
     }
     delete this;
 }
+
+template <typename T>
+NodeT<T>* NodeT<T>::Delete(T dataToDelete, NodeT<T>* current) {
+    if (current == nullptr) {
+        return nullptr;  
+    }
+
+    if (dataToDelete < current->data) {
+        current->l =  Delete(dataToDelete, current->l);
+    }
+    else if (dataToDelete > current->data) {
+        current->r =  Delete(dataToDelete, current->r);
+    }
+    else  { // current->data == dataToDelete
+        if (current->l == nullptr) {
+            NodeT<T>* temp = current->r;
+            delete current;
+            return temp;
+        }
+        else if (current->r == nullptr) {
+            NodeT<T>* temp = current->l;
+            delete current;
+            return temp;
+        }
+        // if current have two children and is equal dataToDelete
+        NodeT<T>* minValNode = GetMinValueNode(current->r);
+        current->data = minValNode->data;
+
+        current->r = Delete(minValNode->data, current->r);
+    }
+    return current;
+}
+
 
 template<typename T>
 int NodeT<T>::Size() {
@@ -151,4 +187,13 @@ void NodeT<T>::GetDepthValuePair(std::vector<std::pair<int, T>>& listt, int dept
     if (r != nullptr) {
         r->GetDepthValuePair(listt, depth +1);
     }
+}
+template<typename T>
+NodeT<T>* NodeT<T>::GetMinValueNode(NodeT<T>* current) {
+    if (current->l != nullptr) {
+        return GetMinValueNode(current->l);
+    }
+    return current;
+
+    
 }

@@ -45,10 +45,14 @@ public:
 
     void Insert(T newData);
 
-    int Find(T dataToFind);
+    T Find(T dataToFind);
 
     void Clear();
 
+    NodeT<T>* Delete(T dataToDelete, NodeT<T>* current);
+
+    
+    
     int Size();
 
     void ToStringInOrder(std::string& someText);
@@ -63,6 +67,8 @@ private:
     void GetActualSize(int& size);
 
     void GetDepthValuePair(std::vector<std::pair<int,T>>& listt, int depth);
+
+    NodeT<T>* GetMinValueNode(NodeT<T>* current);
 };
 
 #include "Node.tpp"

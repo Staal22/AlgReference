@@ -24,7 +24,8 @@ public:
 
     bool operator <=(const SomeScalarClass& rhs) const;
 
-
+    bool operator == (const SomeScalarClass& rhs) const;
+    
     SomeScalarClass operator +(const SomeScalarClass& rhs) const;
 
     std::string ToString() override;
@@ -36,5 +37,5 @@ public:
 
 };
 
-#include "SomeScalarClass.cpp"
+// #include "SomeScalarClass.cpp"
 
