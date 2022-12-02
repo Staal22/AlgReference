@@ -49,9 +49,13 @@ public:
 
     void Clear();
 
+    /**
+     * \brief Based on https://www.programiz.com/dsa/binary-search-tree
+     * \param dataToDelete data<T> to delete from tree
+     * \param current our current node, if you are calling this, pass inn the node you are calling this method with
+     * \return either left of right node if it was not the value to be deleted. return unusefull data unless recursive
+     */
     NodeT<T>* Delete(T dataToDelete, NodeT<T>* current);
-
-    
     
     int Size();
 
