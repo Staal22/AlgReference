@@ -29,7 +29,7 @@ void ShowHTLL() {
 
     int key = 202;
     int val = HT.SearchTable(key);
-    std::cout << "Key: "  << key << " Value: " << val << std::endl;
+    std::cout << "Seached key and resulting value | Key: "  << key << " Value: " << val << std::endl;
 }
 
 int main()
