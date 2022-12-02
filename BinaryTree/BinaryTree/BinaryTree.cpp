@@ -15,7 +15,7 @@ int main() {
     templateNode->Insert(SomeScalarClass(16));
     templateNode->Insert(SomeScalarClass(25));
     templateNode->PrintTree();
-    templateNode->Delete(SomeScalarClass(3), templateNode);
+    templateNode->Delete(SomeScalarClass(20), templateNode);
     std::cout << "---------------------------" << std::endl;
     templateNode->PrintTree();
 
