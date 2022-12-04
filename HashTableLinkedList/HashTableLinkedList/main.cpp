@@ -6,7 +6,7 @@
 
 // HashTableLinkedList
 void ShowHTLL() {
-    HashTableLinkedList<int> HT = HashTableLinkedList<int>{};
+    HashTableLinkedList<int, int> HT = HashTableLinkedList<int,int>{};
     if (HT.IsEmpty())
         std::cout << "IsEmpty" << std::endl;
     else
@@ -18,6 +18,7 @@ void ShowHTLL() {
     HT.InsertItem(202, 69);
     HT.RemoveItem(102);
     HT.InsertItem(5915, 15);
+    HT.InsertItem(201, 1);
     
     
     if (HT.IsEmpty())
@@ -29,7 +30,16 @@ void ShowHTLL() {
 
     int key = 202;
     int val = HT.SearchTable(key);
-    std::cout << "Seached key and resulting value | Key: "  << key << " Value: " << val << std::endl;
+    std::cout << "Seached key and resulting value Key: "  << key << " Value: " << val << std::endl;
+
+    // WITH STRING
+	// ------------------------------------------------------
+    HashTableLinkedList<std::string, float> namedNumbers = HashTableLinkedList<std::string, float>{};
+    std::cout << (namedNumbers.IsEmpty() ? "EMPTY" : "NOT EMPTY") << std::endl;
+    namedNumbers.InsertItem("Bingus", 42.151f);
+    std::cout << namedNumbers.SearchTable("Bingus") << std::endl;
+    
+    
 }
 
 int main()
