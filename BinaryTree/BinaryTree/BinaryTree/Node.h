@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <string>
 #include <vector>
 #include <iostream>
@@ -37,8 +36,8 @@ private:
 template<typename T>
 class NodeT {
 public:
-    NodeT* l{};
-    NodeT* r{};
+    NodeT* left{};
+    NodeT* right{};
     T data{};
 
     NodeT(T _data);

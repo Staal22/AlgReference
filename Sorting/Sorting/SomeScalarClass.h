@@ -2,8 +2,6 @@
 #include <iostream>
 #include "Interfaces/Stringable.h"
 
-
-
 class SomeScalarClass : public IStringable {
 public:
     // SomeScalarClass() = default;
@@ -31,11 +29,11 @@ public:
     std::string ToString() override;
 
     // overloading the std::cout << operator! This way we can super easily debug it to console
-    // note: we cannot do this directly in the class, becouse when oveloading normale we can only choose the operator and the *right* side if the operator (where left is the class)
+    // note: we cannot do this directly in the class, becouse when oveloading normally we can only choose the operator and the *right* side of the operator (where left is the class)
     // therefore we have to link it to a seperate overload (hence the friend keyword)
     friend std::ostream& operator<<(std::ostream& os, SomeScalarClass& s);
 
 };
 
-// #include "SomeScalarClass.cpp"
+#include "SomeScalarClass.tpp"
 

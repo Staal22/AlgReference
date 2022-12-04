@@ -1,6 +1,4 @@
 ﻿#include "Node.h"
-
-
 #include <iostream>
 #include <list>
 #include <conio.h>

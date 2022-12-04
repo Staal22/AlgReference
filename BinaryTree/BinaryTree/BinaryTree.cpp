@@ -1,8 +1,6 @@
 #include "BinaryTree/Node.h"
 // #include "../../Sorting/Sorting/Interfaces/Stringable.h"
-#include <iostream>
 #include "../../Sorting/Sorting/SomeScalarClass.h"
-#include "../../Sorting/Sorting/SomeScalarClass.cpp"
 
 int main() {
     SomeScalarClass t = SomeScalarClass();

@@ -8,24 +8,25 @@ NodeT<T>::NodeT(T _data) {
 template<typename T>
 void NodeT<T>::Insert(T newData) {
     if (newData < data) {
-        if (l != nullptr) {
-            l->Insert(newData);
+        if (left != nullptr) {
+            left->Insert(newData);
             return;
         }
-        else {
+        //else
+        {
             // we are at leaf
-            l = new NodeT<T>(newData);
+            left = new NodeT<T>(newData);
             return;
         }
     }
     else {
-        if (r != nullptr) {
-            r->Insert(newData);
+        if (right != nullptr) {
+            right->Insert(newData);
             return;
         }
         else {
             // we are at leaf
-            r = new NodeT<T>(newData);
+            right = new NodeT<T>(newData);
             return;
         }
     }
@@ -36,22 +37,22 @@ T NodeT<T>::Find(T dataToFind) {
     if (dataToFind == data)
         return data;
     
-    if (l != nullptr && dataToFind < data)
-        return l->Find(dataToFind);
+    if (left != nullptr && dataToFind < data)
+        return left->Find(dataToFind);
     
-    if (r != nullptr && dataToFind > data)
-        return r->Find(dataToFind);
+    if (right != nullptr && dataToFind > data)
+        return right->Find(dataToFind);
     // if we do not have the node
     return NULL;
 }
 
 template<typename T>
 void NodeT<T>::Clear() {
-    if (l != nullptr) {
-        l->Clear();
+    if (left != nullptr) {
+        left->Clear();
     }
-    if (r != nullptr) {
-        r->Clear();
+    if (right != nullptr) {
+        right->Clear();
     }
     delete this;
 }
@@ -63,27 +64,27 @@ NodeT<T>* NodeT<T>::Delete(T dataToDelete, NodeT<T>* current) {
     }
 
     if (dataToDelete < current->data) {
-        current->l =  Delete(dataToDelete, current->l);
+        current->left =  Delete(dataToDelete, current->left);
     }
     else if (dataToDelete > current->data) {
-        current->r =  Delete(dataToDelete, current->r);
+        current->right =  Delete(dataToDelete, current->right);
     }
     else  { // current->data == dataToDelete
-        if (current->l == nullptr) {
-            NodeT<T>* temp = current->r;
+        if (current->left == nullptr) {
+            NodeT<T>* temp = current->right;
             delete current;
             return temp;
         }
-        else if (current->r == nullptr) {
-            NodeT<T>* temp = current->l;
+        else if (current->right == nullptr) {
+            NodeT<T>* temp = current->left;
             delete current;
             return temp;
         }
         // if current have two children and is equal dataToDelete
-        NodeT<T>* minValNode = GetMinValueNode(current->r);
+        NodeT<T>* minValNode = GetMinValueNode(current->right);
         current->data = minValNode->data;
 
-        current->r = Delete(minValNode->data, current->r);
+        current->right = Delete(minValNode->data, current->right);
     }
     return current;
 }
@@ -99,12 +100,12 @@ int NodeT<T>::Size() {
 template<typename T>
 void NodeT<T>::ToStringInOrder(std::string& someText) {
     std::string retVal = "";
-    if (l != nullptr) {
-        l->ToStringInOrder(someText);
+    if (left != nullptr) {
+        left->ToStringInOrder(someText);
     }
     someText += std::to_string(data) + " ";
-    if (r != nullptr) {
-        r->ToStringInOrder(someText);
+    if (right != nullptr) {
+        right->ToStringInOrder(someText);
     }
 }
 
@@ -112,11 +113,11 @@ template<typename T>
 void NodeT<T>::ToStringPreOrder(std::string& someText) {
     std::string retVal = "";
     someText += std::to_string(data) + " ";
-    if (l != nullptr) {
-        l->ToStringPreOrder(someText);   
+    if (left != nullptr) {
+        left->ToStringPreOrder(someText);   
     }
-    if (r != nullptr) {
-        r->ToStringPreOrder(someText);
+    if (right != nullptr) {
+        right->ToStringPreOrder(someText);
     }
 }
 
@@ -124,11 +125,11 @@ template<typename T>
 void NodeT<T>::ToStringPostOrder(std::string& someText) {
         
     std::string retVal = "";
-    if (l != nullptr) {
-        l->ToStringPostOrder(someText);   
+    if (left != nullptr) {
+        left->ToStringPostOrder(someText);   
     }
-    if (r != nullptr) {
-        r->ToStringPostOrder(someText);
+    if (right != nullptr) {
+        right->ToStringPostOrder(someText);
     }
     someText += std::to_string(data) + " ";
 }
@@ -170,28 +171,28 @@ void NodeT<T>::PrintTree() {
 template<typename T>
 void NodeT<T>::GetActualSize(int& size) {
     size++;
-    if (l != nullptr) {
-        l->GetActualSize(size);
+    if (left != nullptr) {
+        left->GetActualSize(size);
     }
-    if (r != nullptr) {
-        r->GetActualSize(size);
+    if (right != nullptr) {
+        right->GetActualSize(size);
     }
 }
 
 template<typename T>
 void NodeT<T>::GetDepthValuePair(std::vector<std::pair<int, T>>& listt, int depth) {
-    if (l != nullptr) {
-        l->GetDepthValuePair(listt, depth+1);
+    if (left != nullptr) {
+        left->GetDepthValuePair(listt, depth+1);
     }
     listt.push_back(std::pair<int,T>(depth, data));
-    if (r != nullptr) {
-        r->GetDepthValuePair(listt, depth +1);
+    if (right != nullptr) {
+        right->GetDepthValuePair(listt, depth +1);
     }
 }
 template<typename T>
 NodeT<T>* NodeT<T>::GetMinValueNode(NodeT<T>* current) {
-    if (current->l != nullptr) {
-        return GetMinValueNode(current->l);
+    if (current->left != nullptr) {
+        return GetMinValueNode(current->left);
     }
     return current;
 
