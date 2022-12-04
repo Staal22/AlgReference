@@ -154,11 +154,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PriorityQueue2\PriQueue.cpp" />
     <ClCompile Include="StackVsQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h" />
     <ClInclude Include="PriorityQueue.h" />
+    <ClInclude Include="PriorityQueue2\PriQueue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>

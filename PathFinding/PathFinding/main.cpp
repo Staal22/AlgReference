@@ -7,9 +7,13 @@
 #include "PathFindingClasses/NodeEdge.h"
 #include "PathFindingClasses/PathFinder.h"
 #include "PriorityQueueDerived.h"
+#include "Space/Vector.h"
 
 int main() {
 
+	Vector v1 = Vector(1.f,0.f,0.f);
+	Vector v2 = Vector(-1.f,0.f,0.f);
+	std::cout << Vector::Distance(v1,v2)<< std::endl;
 	
 	/*
 	// PriorityQueueDerived<Path*, std::vector<Path*>, std::greater<Path*>> priQueue{};
@@ -36,7 +40,50 @@ int main() {
 	priQueue.push(p3);
 	*/
 
-    
+	Vector A(-13.36f, 3.1f, 0);
+	Vector B(-14.41f, -2.5f, 0);
+	Vector C(-4.69f, -1.2f, 0);
+	Vector D(0.70f, -5.2f, 0);
+	Vector E(-5.50f, 5.2f, 0);
+	Vector F(1.56f, 6.27f, 0);
+	Vector G(3.77f, 0.005f, 0);
+	Vector H(10.55f, 4.60f, 0);
+
+	Vector End = G;
+	
+	PathFinder find{};
+	find.AddNode(new Node('A', Vector::Distance(A, End)));
+	find.AddNode(new Node('B', Vector::Distance(B, End)));
+	find.AddNode(new Node('C', Vector::Distance(C, End)));
+	find.AddNode(new Node('D', Vector::Distance(D, End)));
+	find.AddNode(new Node('E', Vector::Distance(E, End)));
+	find.AddNode(new Node('F', Vector::Distance(F, End)));
+	find.AddNode(new Node('G', Vector::Distance(G, End)));
+	find.AddNode(new Node('H', Vector::Distance(H, End)));
+
+	find.AddEdge('A', 'E', Vector::Distance(A,E));
+	find.AddEdge('A', 'B', Vector::Distance(A,B));
+	
+	find.AddEdge('B', 'C', Vector::Distance(B,C));
+	find.AddEdge('B', 'D', Vector::Distance(B,D));
+	
+	find.AddEdge('C', 'E', Vector::Distance(C,E));
+	find.AddEdge('C', 'G', Vector::Distance(C,G));
+	find.AddEdge('C', 'F', Vector::Distance(C,F));
+	
+	find.AddEdge('D', 'G', Vector::Distance(D,G));
+	
+	find.AddEdge('E', 'F', Vector::Distance(E,F));
+	
+	find.AddEdge('F', 'H', Vector::Distance(F,H));
+	
+	find.AddEdge('G', 'H', Vector::Distance(G,H));
+
+	// find.Dijkstra2('A', 'D');
+	find.Astar2('A', 'G');
+	
+	
+	return 0;
     PathFinder pathFind{};
     pathFind.AddNode(new Node('A', 23.91));
     pathFind.AddNode(new Node('B', 25.98));
@@ -64,25 +111,10 @@ int main() {
 	pathFind.AddEdge('F', 'H', 9.1);
 
 	pathFind.AddEdge('G', 'H', 8.35);
-    std::cout << "EDGES : " << std::endl;
-    for (int i = 0; i < pathFind.Edges.size(); ++i) {
-        std::cout << pathFind.Edges[i]->From->Name << " <-> " << pathFind.Edges[i]->To->Name << std::endl;
-    }
-
-    // print all nodes and their edges
-    std::cout << std::endl;
-    std::cout << "NODES WITH OWNING EDGES : " << std::endl;
-    for (int i = 0; i < pathFind.Nodes.size(); ++i) {
-        Node* node = pathFind.Nodes[i];
-
-        std::cout << node->Name << " -> : ";
-        for (int j = 0; j < node->Edges.size(); ++j) 
-            std::cout << node->Edges[j]->GetOther(node)->Name << " ";
-        std::cout << std::endl;
-    }
 	pathFind.Astar2('A', 'H');
 	
 	pathFind.Dijkstra2('A', 'H');
+	pathFind.Print();
     return 0;
     PathFinder pathFinder{};
     pathFinder.AddNode(new Node('A'));

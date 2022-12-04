@@ -14,9 +14,9 @@ public:
     void Dijkstra2(char startChar, char endChar);
     void Astar(char startChar, char endChar);
     void Astar2(char startChar, char endChar);
-
-    Node* FindNode(char c);
     
+    Node* FindNode(char c);
+    void Print() const;
 private:
     void SetAllNodesUnvisited();
 };

@@ -174,7 +174,6 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
     // ------------------------------------------------------
     int nodesWalked = 1;
     while (!priority.empty()) {
-
         // pop
         std::make_heap(priority.begin(), priority.end(), comparator);
         std::sort_heap(priority.begin(), priority.end(), comparator);
@@ -186,9 +185,8 @@ void PathFinder::Dijkstra2(char startChar, char endChar) {
         std::make_heap(priority.begin(), priority.end(), comparator);
         std::sort_heap(priority.begin(), priority.end(), comparator);
 
-        if (current == end) {
+        if (current == end)
             break;
-        }
 
         for (int i = 0; i < current->Edges.size(); ++i) {
             if (current->Edges[i] == current->FromEdge)
@@ -390,6 +388,31 @@ Node* PathFinder::FindNode(char c) {
         }
     }
     return nullptr;
+}
+
+void PathFinder::Print() const {
+
+    std::cout << "NODES : " << std::endl;
+    for (auto node : Nodes) {
+        std::cout << "Name: " << node->Name << " CurrentDistance: " << node->currentDistance << " Heuristic: " << node->Heuristic << std::endl;
+     }
+    
+    std::cout << "EDGES : " << std::endl;
+    for (int i = 0; i < Edges.size(); ++i) {
+        std::cout << Edges[i]->From->Name << " <-> " << Edges[i]->To->Name << std::endl;
+    }
+
+    // print all nodes and their edges
+    std::cout << std::endl;
+    std::cout << "NODES WITH OWNING EDGES : " << std::endl;
+    for (int i = 0; i < Nodes.size(); ++i) {
+        Node* node = Nodes[i];
+
+        std::cout << node->Name << " -> : ";
+        for (int j = 0; j < node->Edges.size(); ++j) 
+            std::cout << node->Edges[j]->GetOther(node)->Name << " ";
+        std::cout << std::endl;
+    }
 }
 
 void PathFinder::SetAllNodesUnvisited() {
